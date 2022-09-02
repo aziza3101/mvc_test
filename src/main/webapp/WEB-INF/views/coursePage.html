@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Course name</th>
+        <th>DateOfStart</th>
+        <th>Duration</th>
+        <th>Image</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c: ${courseList}">
+        <td th:text="${c.id}"></td>
+        <td th:text="${c.courseName}"></td>
+        <td th:text="${c.dateOfStart}"></td>
+        <td th:text="${c.duration}"></td>
+        <td th:text="${c.image}"></td>
+        <td th:text="${c.description}"></td>
+        <td>
+            <a th:href="@{'/api/courses/update/' + ${c.id}}">
+                <button>update</button>
+
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{/api/courses/saveCourse}">
+        <button>
+            + new Course
+        </button>
+    </a>
+</div>
+<div>
+    <a th:href="@{/}">
+        <button>
+            Go to the main page
+        </button>
+    </a>
+</div>
+</body>
+</html>

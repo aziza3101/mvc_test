@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>save new course</title>
+</head>
+<body>
+<form th:action="@{'/api/courses/saveCourse'}"
+      method="POST"
+      th:object="${newCourse}">
+
+    <label for="courseName">course name</label>
+    <input id="courseName" th:field="${newCourse.courseName}" placeholder="example">
+    <br><br>
+
+    <label for="dateOfStart"> dateOfStart</label>
+    <input id="dateOfStart" th:field="${newCourse.dateOfStart}" placeholder="example">
+    <br><br>
+
+    <label for="duration"> duration</label>
+    <input id="duration" th:field="${newCourse.duration}" placeholder="example">
+    <br><br>
+
+    <label for="image"> image</label>
+    <input id="image" th:field="${newCourse.image}" placeholder="example">
+    <br><br>
+
+    <label for="description"> description</label>
+    <input id="description" th:field="${newCourse.description}" placeholder="example">
+    <br><br>
+
+    <div >
+        <select th:field="*{company.id}"  id="companies">
+            <option value="0">select company</option>
+            <option th:each="company : ${companies}"
+                    th:value="${company.id}"
+                    th:text="${company.companyName}"> </option>
+        </select>
+    </div>
+
+    <button type="submit">save course</button>
+</form>
+    <form>
+        <div>
+            <a th:href="@{/api/courses}">
+                <button>go back</button>
+            </a>
+        </div>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+
+    <form action="#"
+          th:action="@{'/api/courses/update/' + ${courseId}}"
+          method="post"
+          th:object="${newCourse}">
+
+        <label for="courseName">Course name: </label>
+        <input type="text" th:field="*{courseName}" id="courseName"/>
+        <br/>
+        <label for="dateOfStart">dateOfStart: </label>
+        <input type="text" th:field="*{dateOfStart}" id="dateOfStart"/>
+        <br/>
+        <label for="duration">duration: </label>
+        <input type="text" th:field="*{duration}" id="duration"/>
+        <br/>
+        <label for="image">image: </label>
+        <input type="text" th:field="*{image}" id="image"/>
+        <br/>
+        <label for="description">description: </label>
+        <input type="text" th:field="*{description}" id="description"/>
+        <br><br>
+
+        <button type="submit">update</button>
+
+    </form>
+
+<div>
+    <a th:href="@{/api/courses}">
+        <button> go back</button>
+    </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Company name</th>
+        <th>LocatedCountry</th>
+        <th>action</th>
+        <th>courses</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="company:${companyList}">
+        <td th:text="${company.id}"></td>
+        <td th:text="${company.companyName}"></td>
+        <td th:text="${company.locatedCountry}"></td>
+        <td>
+            <a th:href="@{'/api/companies/updateCompany/' + ${company.id}}">
+                <button>updateCompany</button>
+            </a>
+            <a th:href="@{'/api/companies/delete/' + ${company.id}}">
+                <button>delete</button>
+            </a>
+            <a th:href="@{'/api/companies/myCourses/' + ${company.id}}">
+                <button>courses</button>
+            </a>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{/api/companies/saveCompany}">
+        <button>
+            + new Company
+        </button>
+    </a>
+</div>
+<div>
+    <a th:href="@{/}">
+        <button>
+            Go to the main page
+        </button>
+    </a>
+</div>
+</body>
+</html>
